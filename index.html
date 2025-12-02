@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Cooking Menu</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* Global */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.7;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.4s ease;
+    scroll-behavior: smooth;
+}
+
+/* THEME VARIABLES */
+:root {
+    --bg: #fff7f1;
+    --text: #333;
+    --card-bg: rgba(255, 255, 255, 0.65);
+    --accent: #ff6a42;
+    --accent-dark: #e15133;
+    --shadow: rgba(0,0,0,0.15);
+}
+.dark-mode {
+    --bg: #1a1a1a;
+    --text: #f0f0f0;
+    --card-bg: rgba(30, 30, 30, 0.55);
+    --accent: #ff8b5f;
+    --accent-dark: #ff6a42;
+    --shadow: rgba(255,255,255,0.1);
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: white;
+    padding: 20px 20px 10px;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    text-align: center;
+    box-shadow: 0 4px 15px var(--shadow);
+}
+header h1 { font-size: 2.4rem; font-weight: 700; margin-bottom: 12px; }
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+nav a {
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+nav a:hover { background: rgba(255, 255, 255, 0.25); }
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 50px;
+    background: white;
+    color: var(--accent-dark);
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.theme-toggle:hover { transform: scale(1.1); }
+
+/* Sections */
+section {
+    max-width: 950px;
+    margin: 40px auto;
+    padding: 20px;
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+section.visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Recipe Cards */
+.recipe {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 6px 18px var(--shadow);
+    margin-bottom: 35px;
+    text-align: center;
+}
+.recipe img {
+    width: 100%;
+    max-height: 330px;
+    border-radius: 18px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+.start-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.start-btn:hover { background: var(--accent-dark); }
+
+/* Collapsible content */
+.recipe-content { display: none; text-align: left; margin-top: 15px; }
+
+/* About Card */
+.about-card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px var(--shadow);
+}
+
+
+.social-links { text-align: center; margin: 40px 0; }
+.social-links a {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 4px 10px var(--shadow);
+    transition: 0.3s ease;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 25px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: white;
+    margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>My Cooking Menu</h1>
+    <nav>
+        <a onclick="showSection('home')">Home</a>
+        <a onclick="showSection('learn')">Learn How to Cook</a>
+        <a onclick="showSection('about')">About</a>
+        <a onclick="showSection('contact')">Contact</a>
+    </nav>
+    <button class="theme-toggle" onclick="toggleTheme()">☀️ / 🌙</button>
+</header>
+
+<!-- HOME SECTION -->
+<section id="home">
+    <h2 style="color: var(--accent);">Cooking</h2>
+    <p>Cooking transforms simple ingredients into meals that bring people together.</p>
+
+    <h2 style="color: var(--accent); margin-top: 30px;">Learn How to Cook</h2>
+    <p>Start with simple recipes, basic techniques, and fresh ingredients.</p>
+
+    <h2 style="color: var(--accent); margin-top: 30px;">About Cooking</h2>
+    <p>I love cooking because it helps me prepare healthy meals while discovering new flavors and cultures.</p>
+</section>
+
+<!-- LEARN HOW TO COOK SECTION -->
+<section id="learn">
+    <h2 style="color: var(--accent); text-align:center;">Learn How to Cook</h2>
+    <p style="text-align:center; max-width:700px; margin:auto;">
+        Learning how to cook is the first step to creating delicious meals. 
+        Click “Start” to reveal the ingredients and process for each recipe.
+    </p>
+
+
+<div class="recipe">
+    <h2 style="color: var(--accent);">Appetizer – Lumpiang Shanghai</h2>
+    <img src="images/lumpiang-shanghai.jpg" alt="Lumpiang Shanghai">
+    <button class="start-btn" onclick="toggleRecipe('appetizer')">Start</button>
+    <div id="appetizer" class="recipe-content">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>Ground pork</li>
+            <li>Minced vegetables</li>
+            <li>Garlic</li>
+            <li>Soy sauce</li>
+            <li>Salt & pepper</li>
+            <li>Spring roll wrappers</li>
+            <li>Cooking oil</li>
+        </ul>
+
+        <h3>Process:</h3>
+        <ol>
+            <li>In a large bowl, combine ground pork, minced vegetables, garlic, soy sauce, salt, and pepper. Mix thoroughly until well combined.</li>
+            <li>Place a small amount of the filling on the wrapper. Roll tightly, folding the sides inward.</li>
+            <li>Seal the edge with a bit of water to prevent the roll from opening during frying.</li>
+            <li>Heat enough oil in a deep pan over medium heat.</li>
+            <li>Fry the lumpia in batches until they turn golden brown and crispy.</li>
+            <li>Drain on paper towels and serve with sweet chili sauce.</li>
+        </ol>
+    </div>
+</div>
+
+<!-- Ukoy -->
+<div class="recipe">
+    <h2 style="color: var(--accent);">Appetizer – Ukoy</h2>
+    <img src="images/ukoy.jpg" alt="Ukoy">
+    <button class="start-btn" onclick="toggleRecipe('ukoy')">Start</button>
+    <div id="ukoy" class="recipe-content">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>Small shrimps</li>
+            <li>Grated papaya or squash</li>
+            <li>Flour</li>
+            <li>Cornstarch</li>
+            <li>Egg</li>
+            <li>Salt & pepper</li>
+            <li>Water</li>
+            <li>Cooking oil</li>
+        </ul>
+
+        <h3>Process:</h3>
+        <ol>
+            <li>In a mixing bowl, combine shrimps, grated papaya or squash, flour, and cornstarch.</li>
+            <li>Add the egg, followed by water, salt, and pepper. Mix until a thick batter forms.</li>
+            <li>Heat oil in a frying pan over medium heat.</li>
+            <li>Scoop a ladleful of batter and gently pour into the hot oil.</li>
+            <li>Flatten slightly with a spoon and fry until edges turn golden.</li>
+            <li>Flip to cook the other side evenly until crisp.</li>
+            <li>Serve hot with spiced vinegar.</li>
+        </ol>
+    </div>
+</div>
+
+<!-- Lumpiang Toge -->
+<div class="recipe">
+    <h2 style="color: var(--accent);">Appetizer – Lumpiang Toge</h2>
+    <img src="images/lumpiang-toge.jpg" alt="Lumpiang Toge">
+    <button class="start-btn" onclick="toggleRecipe('toge')">Start</button>
+    <div id="toge" class="recipe-content">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>Bean sprouts (toge)</li>
+            <li>Carrots</li>
+            <li>Onion</li>
+            <li>Garlic</li>
+            <li>Soy sauce</li>
+            <li>Salt & pepper</li>
+            <li>Spring roll wrappers</li>
+            <li>Cooking oil</li>
+        </ul>
+
+        <h3>Process:</h3>
+        <ol>
+            <li>Heat oil in a pan and sauté garlic and onion until aromatic.</li>
+            <li>Add carrots and cook for 2–3 minutes.</li>
+            <li>Add bean sprouts and stir gently to avoid breaking them.</li>
+            <li>Season with soy sauce, salt, and pepper. Mix evenly.</li>
+            <li>Remove from heat and let the filling cool completely.</li>
+            <li>Place filling on wrappers and roll tightly.</li>
+            <li>Deep fry until crispy and golden brown.</li>
+            <li>Serve with vinegar dipping sauce.</li>
+        </ol>
+    </div>
+</div>
+
+<!-- Adobong Manok -->
+<div class="recipe">
+    <h2 style="color: var(--accent);">Main Course – Adobong Manok</h2>
+    <img src="images/adobong-manok.jpg" alt="Adobong Manok">
+    <button class="start-btn" onclick="toggleRecipe('main')">Start</button>
+    <div id="main" class="recipe-content">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>Chicken pieces</li>
+            <li>Soy sauce</li>
+            <li>Vinegar</li>
+            <li>Garlic</li>
+            <li>Bay leaves</li>
+            <li>Pepper</li>
+            <li>Water</li>
+        </ul>
+
+        <h3>Process:</h3>
+        <ol>
+            <li>Place chicken in a bowl and add soy sauce, crushed garlic, pepper, and bay leaves. Marinate for at least 30 minutes.</li>
+            <li>Heat a bit of oil in a pot. Add garlic and sauté until light brown.</li>
+            <li>Add chicken (without the marinade first) and cook until lightly browned.</li>
+            <li>Pour in the marinade and add water as needed to cover the chicken.</li>
+            <li>Simmer uncovered for 10 minutes then pour vinegar. Do not stir until it boils.</li>
+            <li>Lower heat and simmer for 30–40 minutes until chicken is tender.</li>
+            <li>Optional: Let the sauce reduce for a thicker, richer adobo.</li>
+        </ol>
+    </div>
+</div>
+
+<!-- Sinigang -->
+<div class="recipe">
+    <h2 style="color: var(--accent);">Main Course – Sinigang</h2>
+    <img src="images/sinigang.jpg" alt="Sinigang">
+    <button class="start-btn" onclick="toggleRecipe('sinigang')">Start</button>
+    <div id="sinigang" class="recipe-content">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>Pork belly or ribs</li>
+            <li>Tamarind mix</li>
+            <li>Tomatoes</li>
+            <li>Onion</li>
+            <li>Radish</li>
+            <li>Sitaw</li>
+            <li>Kangkong</li>
+            <li>Green chili</li>
+            <li>Salt & pepper</li>
+        </ul>
+
+        <h3>Process:</h3>
+        <ol>
+            <li>Place pork in a pot, cover with water, and bring to a boil.</li>
+            <li>Skim off scum that rises to the top for a clear broth.</li>
+            <li>Add tomatoes and onion, then simmer for 40–60 minutes until pork is tender.</li>
+            <li>Add radish and cook for 5 minutes.</li>
+            <li>Add sitaw and green chili.</li>
+            <li>Stir in tamarind mix and simmer for another 3–5 minutes.</li>
+            <li>Add kangkong leaves last and turn off heat.</li>
+            <li>Season with salt and pepper before serving.</li>
+        </ol>
+    </div>
+</div>
+
+<!-- Tinola -->
+<div class="recipe">
+    <h2 style="color: var(--accent);">Main Course – Tinola</h2>
+    <img src="images/tinola.jpg" alt="Tinola">
+    <button class="start-btn" onclick="toggleRecipe('tinola')">Start</button>
+    <div id="tinola" class="recipe-content">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>Chicken</li>
+            <li>Ginger</li>
+            <li>Garlic</li>
+            <li>Onion</li>
+            <li>Papaya or sayote</li>
+            <li>Malunggay leaves</li>
+            <li>Fish sauce</li>
+            <li>Water</li>
+        </ul>
+
+        <h3>Process:</h3>
+        <ol>
+            <li>Sauté ginger in hot oil until fragrant.</li>
+            <li>Add garlic and onion, then cook until softened.</li>
+            <li>Add chicken pieces and cook until lightly browned.</li>
+            <li>Season with fish sauce and stir for 1 minute.</li>
+            <li>Pour water until chicken is fully submerged. Bring to a boil.</li>
+            <li>Simmer for 20 minutes.</li>
+            <li>Add papaya or sayote and cook until tender.</li>
+            <li>Add malunggay leaves and simmer for 1–2 minutes.</li>
+            <li>Serve hot.</li>
+        </ol>
+    </div>
+</div>
+
+<!-- Nilaga -->
+<div class="recipe">
+    <h2 style="color: var(--accent);">Main Course – Nilaga</h2>
+    <img src="images/nilaga.jpg" alt="Nilaga">
+    <button class="start-btn" onclick="toggleRecipe('nilaga')">Start</button>
+    <div id="nilaga" class="recipe-content">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>Beef shank or ribs</li>
+            <li>Potatoes</li>
+            <li>Cabbage</li>
+            <li>Carrots</li>
+            <li>Onion</li>
+            <li>Peppercorn</li>
+            <li>Water</li>
+            <li>Salt & pepper</li>
+        </ul>
+
+        <h3>Process:</h3>
+        <ol>
+            <li>Place beef in a pot and cover with water. Bring to a boil.</li>
+            <li>Skim off any scum for a clear broth.</li>
+            <li>Add onion and peppercorn, then simmer for 1.5–2 hours until beef is tender.</li>
+            <li>Add potatoes and carrots. Cook for 10 minutes.</li>
+            <li>Add cabbage and continue simmering for 3 minutes.</li>
+            <li>Season with salt and pepper.</li>
+            <li>Serve warm.</li>
+        </ol>
+    </div>
+</div>
+
+<!-- Fruit Salad -->
+<div class="recipe">
+    <h2 style="color: var(--accent);">Dessert – Fruit Salad</h2>
+    <img src="images/fruit-salad.jpg" alt="Fruit Salad">
+    <button class="start-btn" onclick="toggleRecipe('dessert')">Start</button>
+    <div id="dessert" class="recipe-content">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>Mixed fruits</li>
+            <li>Condensed milk</li>
+            <li>All-purpose cream</li>
+        </ul>
+
+        <h3>Process:</h3>
+        <ol>
+            <li>Drain canned fruits or prepare fresh fruits by cutting them into bite-sized pieces.</li>
+            <li>In a large bowl, combine fruits, condensed milk, and all-purpose cream.</li>
+            <li>Mix gently to avoid crushing soft fruits.</li>
+            <li>Chill for at least 2 hours before serving.</li>
+        </ol>
+    </div>
+</div>
+
+<!-- Halo-Halo -->
+<div class="recipe">
+    <h2 style="color: var(--accent);">Dessert – Halo-Halo</h2>
+    <img src="images/halo-halo.jpg" alt="Halo-Halo">
+    <button class="start-btn" onclick="toggleRecipe('halohalo')">Start</button>
+    <div id="halohalo" class="recipe-content">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>Crushed ice</li>
+            <li>Evaporated milk</li>
+            <li>Sweetened beans</li>
+            <li>Nata de coco</li>
+            <li>Leche flan</li>
+            <li>Ube halaya</li>
+            <li>Bananas</li>
+            <li>Jelly</li>
+        </ul>
+
+        <h3>Process:</h3>
+        <ol>
+            <li>Prepare a tall glass and add sweetened beans, nata de coco, jelly, and sliced bananas at the bottom.</li>
+            <li>Add a generous amount of crushed ice on top of the ingredients.</li>
+            <li>Pour evaporated milk slowly over the ice.</li>
+            <li>Add a spoonful of ube halaya and a slice of leche flan on top.</li>
+            <li>Serve and mix before eating.</li>
+        </ol>
+    </div>
+</div>
+
+<!-- Bananacue -->
+<div class="recipe">
+    <h2 style="color: var(--accent);">Dessert – Bananacue</h2>
+    <img src="images/bananacue.jpg" alt="Bananacue">
+    <button class="start-btn" onclick="toggleRecipe('bananacue')">Start</button>
+    <div id="bananacue" class="recipe-content">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>Saba bananas</li>
+            <li>Brown sugar</li>
+            <li>Cooking oil</li>
+            <li>Bamboo sticks</li>
+        </ul>
+
+        <h3>Process:</h3>
+        <ol>
+            <li>Heat a generous amount of oil in a pan over medium heat.</li>
+            <li>Add bananas and fry for 2 minutes.</li>
+            <li>Sprinkle brown sugar directly into the oil.</li>
+            <li>Allow sugar to melt and coat the bananas evenly.</li>
+            <li>Continue cooking until bananas are caramelized.</li>
+            <li>Remove from oil and skewer onto bamboo sticks.</li>
+            <li>Cool slightly before serving.</li>
+        </ol>
+    </div>
+</div>
+
+<!-- Leche Flan -->
+<div class="recipe">
+    <h2 style="color: var(--accent);">Dessert – Leche Flan</h2>
+    <img src="images/leche-flan.jpg" alt="Leche Flan">
+    <button class="start-btn" onclick="toggleRecipe('lecheflan')">Start</button>
+    <div id="lecheflan" class="recipe-content">
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>Egg yolks</li>
+            <li>Condensed milk</li>
+            <li>Evaporated milk</li>
+            <li>Vanilla</li>
+            <li>Sugar (for caramel)</li>
+        </ul>
+
+        <h3>Process:</h3>
+        <ol>
+            <li>Heat sugar in your llanera mold over low heat until melted and golden.</li>
+            <li>Spread the caramel evenly and allow it to cool and harden.</li>
+            <li>In a bowl, whisk egg yolks gently to avoid bubbles.</li>
+            <li>Add condensed milk and evaporated milk, then mix until smooth.</li>
+            <li>Add vanilla extract and strain mixture for a smooth texture.</li>
+            <li>Pour the mixture into the caramel-lined mold.</li>
+            <li>Cover with foil and steam for 30–40 minutes.</li>
+            <li>Cool completely before removing from mold.</li>
+        </ol>
+    </div>
+</div>
+
+</section>
+
+<!-- ABOUT SECTION -->
+<section id="about">
+    <h2 style="color: var(--accent);">About Me</h2>
+    <div class="about-card">
+        <img src="images/profile.jpg" alt="My Photo"
+             style="width:180px; height:180px; border-radius:50%; object-fit:cover; box-shadow:0 4px 12px var(--shadow);">
+        <div style="flex:1; min-width:250px;">
+        
+            <h3>Hello! I'm  Rohanie Belison </h3>
+            <p>"I love cooking because it feels like a way to take care of myself and the people I love. There’s something comforting about turning simple ingredients into something warm and satisfying, and I enjoy the little moments of creativity and focus it gives me."</p>
+            
+                     <h3>Hello! I'm  Aiza Gonzales </h3>
+            <p>I'm passionate about cooking and love exploring different flavors and cultures. 
+               Cooking helps me express creativity and share delicious meals with others.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact" class="social-links">
+    <h2 style="color: var(--accent);">Follow Me on Social Media</h2>
+    <a href="https://www.facebook.com/share/17SXhmFQSo/" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/yatt_gzls" target="_blank">Instagram</a>
+</section>
+
+<footer>&copy; 2025 My Cooking Menu</footer>
+
+<script>
+/* Section Show/Hide */
+function showSection(id) {
+    document.querySelectorAll('section').forEach(sec => sec.classList.remove('visible'));
+    document.getElementById(id).classList.add('visible');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+showSection('home'); // default
+
+/* Dark Mode */
+function toggleTheme() { document.body.classList.toggle('dark-mode'); }
+
+/* Show/Hide Recipe Ingredients & Process */
+function toggleRecipe(id) {
+    const content = document.getElementById(id);
+    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+}
+</script>
+
+</body>
+</html>
+
