@@ -1,6 +1,23 @@
 /* Global */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.85;
+    letter-spacing: 0.2px;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.4s ease;
+    scroll-behavior: smooth;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+<style>
+/* Global */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.7;
     background: var(--bg);
@@ -157,4 +174,3 @@ footer {
     color: white;
     margin-top: 40px;
 }
-</style>
