@@ -6,34 +6,43 @@
 <title>My Cooking Menu</title>
 
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 <link href="style.css" rel="stylesheet">
+<style>
+
+</style>
 </head>
 
 <body>
 
-<header>
-    <h1>My Cooking Menu</h1>
-    <nav>
-        <a onclick="showSection('home')">Home</a>
-        <a onclick="showSection('learn')">Learn How to Cook</a>
-        <a onclick="showSection('about')">About</a>
-        <a onclick="showSection('contact')">Contact</a>
-    </nav>
-    <button class="theme-toggle" onclick="toggleTheme()">☀️ / 🌙</button>
-</header>
-
-<!-- HOME SECTION -->
-<section id="home">
-    <h2 style="color: var(--accent);">Cooking</h2>
-    <p>Cooking transforms simple ingredients into meals that bring people together.</p>
-
-    <h2 style="color: var(--accent); margin-top: 30px;">Learn How to Cook</h2>
-    <p>Start with simple recipes, basic techniques, and fresh ingredients.</p>
-
-    <h2 style="color: var(--accent); margin-top: 30px;">About Cooking</h2>
-    <p>I love cooking because it helps me prepare healthy meals while discovering new flavors and cultures.</p>
-</section>
+    <header>
+        <h1>Your Cooking Menu</h1>
+        <nav>
+            <a href="javascript:void(0)" onclick="showSection('home')">Home</a>
+            <a href="javascript:void(0)" onclick="showSection('learn')">Learn How to Cook</a>
+            <a href="javascript:void(0)" onclick="showSection('about')">About</a>
+            <a href="javascript:void(0)" onclick="showSection('contact')">Contact</a>
+        </nav>
+        <button class="theme-toggle" onclick="toggleTheme()">☀️ / 🌙</button>
+    </header>
+    
+    <!-- HOME SECTION -->
+    <section id="home" class="visible">
+        <h2 style="color: var(--accent);"> Hi Welcome!!</h2>
+        <p>Do you like cooking?
+        If yes, then this page is for you!
+        <p> Explore simple and delicious Filipino recipes that you can easily make at home.</p>
+    
+        <h2 style="color: var(--accent); margin-top: 30px;"> About This </h2>
+        <p>Our page will be your guide to cook, especially for those who don’t know how to cook. 
+            </p>We provide simple Filipino recipes for everyday meals, from main courses to desserts.</p>
+    
+        <h2 style="color: var(--accent); margin-top: 30px;"> What You'll Find Here</h2>
+        <p> Filipino Appetizers,
+            Main courses, and 
+            Desserts,  all easy to follow and delicious. 
+            </p>Now, let's cook!" </p>
+    </section>    
 
 <!-- LEARN HOW TO COOK SECTION -->
 <section id="learn">
@@ -46,7 +55,7 @@
 
 <div class="recipe">
     <h2 style="color: var(--accent);">Appetizer – Lumpiang Shanghai</h2>
-    <img src="images/lumpiang-shanghai.jpg" alt="Lumpiang Shanghai">
+    <img src="lumpia pic.jpg" alt="Movie 1" height="auto" width="100%">
     <button class="start-btn" onclick="toggleRecipe('appetizer')">Start</button>
     <div id="appetizer" class="recipe-content">
         <h3>Ingredients:</h3>
@@ -69,13 +78,13 @@
             <li>Fry the lumpia in batches until they turn golden brown and crispy.</li>
             <li>Drain on paper towels and serve with sweet chili sauce.</li>
         </ol>
-    </div>
 </div>
+
 
 <!-- Ukoy -->
 <div class="recipe">
     <h2 style="color: var(--accent);">Appetizer – Ukoy</h2>
-    <img src="images/ukoy.jpg" alt="Ukoy">
+    <img src="ukoyreal.jpg" alt="Movie 1" height="auto" width="100%">
     <button class="start-btn" onclick="toggleRecipe('ukoy')">Start</button>
     <div id="ukoy" class="recipe-content">
         <h3>Ingredients:</h3>
@@ -106,7 +115,7 @@
 <!-- Lumpiang Toge -->
 <div class="recipe">
     <h2 style="color: var(--accent);">Appetizer – Lumpiang Toge</h2>
-    <img src="images/lumpiang-toge.jpg" alt="Lumpiang Toge">
+    <img src="togeether.jpg" alt="Movie 1" height="auto" width="100%">
     <button class="start-btn" onclick="toggleRecipe('toge')">Start</button>
     <div id="toge" class="recipe-content">
         <h3>Ingredients:</h3>
@@ -138,7 +147,7 @@
 <!-- Adobong Manok -->
 <div class="recipe">
     <h2 style="color: var(--accent);">Main Course – Adobong Manok</h2>
-    <img src="images/adobong-manok.jpg" alt="Adobong Manok">
+    <img src="adobomanok.jpg" alt="Movie 1" height="auto" width="100%">
     <button class="start-btn" onclick="toggleRecipe('main')">Start</button>
     <div id="main" class="recipe-content">
         <h3>Ingredients:</h3>
@@ -168,7 +177,7 @@
 <!-- Sinigang -->
 <div class="recipe">
     <h2 style="color: var(--accent);">Main Course – Sinigang</h2>
-    <img src="images/sinigang.jpg" alt="Sinigang">
+    <img src="Sinigang.webp" alt="Movie 1" height="auto" width="100%">
     <button class="start-btn" onclick="toggleRecipe('sinigang')">Start</button>
     <div id="sinigang" class="recipe-content">
         <h3>Ingredients:</h3>
@@ -201,7 +210,7 @@
 <!-- Tinola -->
 <div class="recipe">
     <h2 style="color: var(--accent);">Main Course – Tinola</h2>
-    <img src="images/tinola.jpg" alt="Tinola">
+    <img src="tinola final.jpg" alt="Movie 1" height="auto" width="100%">
     <button class="start-btn" onclick="toggleRecipe('tinola')">Start</button>
     <div id="tinola" class="recipe-content">
         <h3>Ingredients:</h3>
@@ -234,7 +243,7 @@
 <!-- Nilaga -->
 <div class="recipe">
     <h2 style="color: var(--accent);">Main Course – Nilaga</h2>
-    <img src="images/nilaga.jpg" alt="Nilaga">
+    <img src="nilaga.jpg" alt="Movie 1" height="auto" width="100%">
     <button class="start-btn" onclick="toggleRecipe('nilaga')">Start</button>
     <div id="nilaga" class="recipe-content">
         <h3>Ingredients:</h3>
@@ -265,7 +274,7 @@
 <!-- Fruit Salad -->
 <div class="recipe">
     <h2 style="color: var(--accent);">Dessert – Fruit Salad</h2>
-    <img src="images/fruit-salad.jpg" alt="Fruit Salad">
+    <img src="fruit salad.jpg" alt="Movie 1" height="auto" width="100%">
     <button class="start-btn" onclick="toggleRecipe('dessert')">Start</button>
     <div id="dessert" class="recipe-content">
         <h3>Ingredients:</h3>
@@ -288,7 +297,7 @@
 <!-- Halo-Halo -->
 <div class="recipe">
     <h2 style="color: var(--accent);">Dessert – Halo-Halo</h2>
-    <img src="images/halo-halo.jpg" alt="Halo-Halo">
+    <img src="halo halo 3.jpg" alt="Halo-Halo">
     <button class="start-btn" onclick="toggleRecipe('halohalo')">Start</button>
     <div id="halohalo" class="recipe-content">
         <h3>Ingredients:</h3>
@@ -317,7 +326,7 @@
 <!-- Bananacue -->
 <div class="recipe">
     <h2 style="color: var(--accent);">Dessert – Bananacue</h2>
-    <img src="images/bananacue.jpg" alt="Bananacue">
+    <img src="Banana.jpg" alt="Movie 1" height="auto" width="100%">
     <button class="start-btn" onclick="toggleRecipe('bananacue')">Start</button>
     <div id="bananacue" class="recipe-content">
         <h3>Ingredients:</h3>
@@ -344,7 +353,7 @@
 <!-- Leche Flan -->
 <div class="recipe">
     <h2 style="color: var(--accent);">Dessert – Leche Flan</h2>
-    <img src="images/leche-flan.jpg" alt="Leche Flan">
+    <img src="flan2.jpg" alt="Movie 1" height="auto" width="100%">
     <button class="start-btn" onclick="toggleRecipe('lecheflan')">Start</button>
     <div id="lecheflan" class="recipe-content">
         <h3>Ingredients:</h3>
@@ -374,18 +383,29 @@
 
 <!-- ABOUT SECTION -->
 <section id="about">
-    <h2 style="color: var(--accent);">About Me</h2>
+    <h2 style="color: var(--accent);">About Us</h2>
+    
     <div class="about-card">
-        <img src="images/profile.jpg" alt="My Photo"
+        <img src="ME ROHANIE.jpg" alt="Profile Photo 1"
              style="width:180px; height:180px; border-radius:50%; object-fit:cover; box-shadow:0 4px 12px var(--shadow);">
+
         <div style="flex:1; min-width:250px;">
-        
-            <h3>Hello! I'm  Rohanie Belison </h3>
-            <p>"I love cooking because it feels like a way to take care of myself and the people I love. There’s something comforting about turning simple ingredients into something warm and satisfying, and I enjoy the little moments of creativity and focus it gives me."</p>
-            
-                     <h3>Hello! I'm  Aiza Gonzales </h3>
+            <h3>Hello! I'm ROHANIE BELISON </h3>
             <p>I'm passionate about cooking and love exploring different flavors and cultures. 
                Cooking helps me express creativity and share delicious meals with others.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-card">
+        <img src="AIZA.jpg" alt="Profile Photo 2"
+             style="width:180px; height:180px; border-radius:50%; object-fit:cover; box-shadow:0 4px 12px var(--shadow);">
+
+        <div style="flex:1; min-width:250px;">
+            <h3>Hello! I'm AIZA GONZALES </h3>
+            <p>I also love cooking and experimenting with flavors from around the world. 
+               Sharing meals and cooking together is one of my greatest joys.</p>
+            </div>
         </div>
     </div>
 </section>
@@ -394,7 +414,7 @@
 <section id="contact" class="social-links">
     <h2 style="color: var(--accent);">Follow Me on Social Media</h2>
     <a href="https://www.facebook.com/share/17SXhmFQSo/" target="_blank">Facebook</a>
-    <a href="https://www.instagram.com/yatt_gzls" target="_blank">Instagram</a>
+    <a href=https://www.instagram.com/eohaniee>Instagram</a>
 </section>
 
 <footer>&copy; 2025 My Cooking Menu</footer>
